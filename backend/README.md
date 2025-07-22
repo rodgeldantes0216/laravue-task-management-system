@@ -1,6 +1,6 @@
 ## 📫 API Documentation
 
-All API endpoints are documented in the [Postman Collection](./TaskManagement.postman_collection.json).
+All API endpoints are documented in the [Postman Collection](./docs/TaskManagement.postman_collection.json).
 
 This includes:
 - 🔐 Auth (register, login, logout, profile)
