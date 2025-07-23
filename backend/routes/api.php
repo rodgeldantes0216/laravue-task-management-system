@@ -11,8 +11,8 @@ use App\Http\Controllers\API\AdminController;
 // })->middleware('auth:sanctum');
 
 // Public routes
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+// Route::post('/register', [AuthController::class, 'register']);
+// Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // Authenticated users (no admin)
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -26,5 +26,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 // Admin-only
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users.index');
+
+    Route::get('/admin/audits', function () {
+        return \App\Models\TaskAudit::with(['user', 'task'])->latest()->paginate(20);
+    })->name('admin.audits.index');
 });
 

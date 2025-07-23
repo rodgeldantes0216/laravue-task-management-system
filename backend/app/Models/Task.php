@@ -20,6 +20,7 @@ class Task extends Model
         'status',
         'priority',
         'user_id',
+        'order',
     ];
 
     /**
